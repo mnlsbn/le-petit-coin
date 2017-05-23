@@ -46,7 +46,7 @@ wcs_attributes = [
   name: 'P\'tit coin d\'tranquilité',
   description: 'WC au calme pour faire son affaire tranquille',
   address: '2-4 Rue du Béguinage, 59800 Lille, France',
-  availability: true
+  availability: false
   },
   {
   name: 'Bon toilette',
@@ -70,7 +70,7 @@ wcs_attributes = [
   name: 'Have a seat :-)',
   description: 'Enjoy a well-situated WC with good magazines to read',
   address: '102 Rue de Jemmapes, 59800 Lille, France',
-  availability: true
+  availability: false
   },
   {
   name: 'Tranquilou bidou',
@@ -94,7 +94,7 @@ wcs_attributes = [
   name: 'El Pissato',
   description: 'Caramba! prend\'plaisir ici moun ami, c\est toi lé rey',
   address: '8 Rue Maracci, 59800 Lille, France',
-  availability: true
+  availability: false
   }
 ]
 
