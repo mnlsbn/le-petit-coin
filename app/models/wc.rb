@@ -1,4 +1,5 @@
 class Wc < ApplicationRecord
   belongs_to :user
-  has_many :reviews, :bookings
+  has_many :reviews
+  has_many :bookings
 end
