@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <% wcs.each do |user, wc| %> <%# modifier data %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: url('<%= cl_image_path flat.picture %>');">  <%# modifier adress picture %>
+          <div class="card-category"><%= wc.city %></div> <%# créer city dans tables wc%>
+          <div class="card-description">
+            <h2><%= wc.name %></h2>
+            <p><%= wc.description %></p>
+          </div>
+          <%= image_tag wc.user_picture, class:"card-user avatar avatar-large" %> <%# modifier adress picture %>
+          <%= link_to "", "flats/#{owner}.html", class: "card-link" %> <%# modifier lien %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
