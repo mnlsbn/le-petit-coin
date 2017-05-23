@@ -1,0 +1,19 @@
+ <div class='form'>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <fieldset>
+        <legend>Create your profile</legend>
+      <div class="card-new text-center">
+        <%= simple_form_for [@profile] do |f| %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :phone_number %>
+          <%= f.input :picture %>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Submit" %>
+          </div>
+        <% end %>
+      </div>
+    </fieldset>
+  </div>
+</div>
