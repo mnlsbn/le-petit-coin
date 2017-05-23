@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :reviews #il faut laisser les has_many sur différentes lignes (sinon bug)
-  has_many :bookings
-  has_many :wcs  #faut il mettre une relation has_many wcs through bookings ?
-  has_one :profile
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 end

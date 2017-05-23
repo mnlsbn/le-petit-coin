@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Enable Devise gem for development environment
+  config.action_mailer.default_url_options = { host: 'http://le-petit-coin.herokuapp.com/' }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
