@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :wcs, dependent: :destroy
+  has_one :profile
 end

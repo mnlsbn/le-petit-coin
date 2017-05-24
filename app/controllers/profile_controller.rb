@@ -1,19 +1,19 @@
-class ProfilesController < ApplicationController
+class ProfileController < ApplicationController
   def new
     @profile = Profile.new
   end
 
   def create
-    @profile = Profile.new(profile_params)
+    @profile = current_user.build_profile(profile_params)
     if @profile.save
-      redirect_to profile_path(@profile)    # link à updater
+      redirect_to profile_path(@profile)
     else
       render :new   # link à updater
     end
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    @profile = current_user.profile
   end
 
   def edit
