@@ -3,7 +3,7 @@
   <h2 class="text-center"> Add a new WC </h2>
   <div class="container form">
 
-    <%= simple_form_for @wc do |f|  %>
+    <%= simple_form_for [current_user.profile, @wc] do |f|  %>
     <%= f.input :name, label: 'Name :' %>
     <%= f.input :description, label: 'Description :', as: :text %>
     <%= f.input :address, label: 'Address :', placeholder: '12 rue Princesse, 59000 Lille' %>

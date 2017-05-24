@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   # end
 
   def new
-    @wc = Wc.find(params[:wc_id])
+    # @wc = Wc.find(params[:wc_id])
     @booking = Booking.new
   end
 

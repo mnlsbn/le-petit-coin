@@ -9,5 +9,10 @@
   <p><strong>Available ? </strong></p>
   <%=  @wc.availability == true ? 'Yes' : 'No, sorry' %>
   <p></p>
-  <%= link_to 'Book Now', new_wc_booking_path(@wc), { class: 'btn btn-primary'} %>
+  <%= render partial: 'bookings/form', locals: { booking: Booking.new, wc: @wc } %>
 </div>
+
+
+<% @wc.bookings.each do |booking| %>
+<%= booking.id %>
+<% end %>

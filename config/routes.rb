@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :wcs, only: [:index, :show, :new, :create]
+  resource :profile, controller: :profile do
+    resources :wcs, only: [:new, :create]
+  end
 
+  resources :wcs, only: [:index, :show]
 
-  resource :profile, controller: :profile
   devise_for :users
 
   resources :wcs do
