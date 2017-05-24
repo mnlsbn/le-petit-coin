@@ -1,6 +1,6 @@
 <h1> List of All available toilets </h1>
 
-<%= link_to 'Add new', new_wc_path %>
+<%= link_to 'Add new', new_wc_path, { class: "btn btn-default" }%>
 
 <% @wcs.each do |wc| %>
   <ul class="list-unstyled">

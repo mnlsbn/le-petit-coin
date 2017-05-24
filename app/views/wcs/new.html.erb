@@ -1,7 +1,18 @@
- <%= simple_form_for @wc do |f|  %>
-  <%= f.input :name, label: 'Name :' %>
-  <%= f.input :description, label: 'Description :', as: :text %>
-  <%= f.input :address, label: 'Address :', placeholder: '12 rue Princesse, 59000 Lille' %>
-  <%= f.input :availability %>
-  <%= f.button :submit %>
-  <% end %>
+
+
+  <h2 class="text-center"> Add a new WC </h2>
+  <div class="container form">
+
+    <%= simple_form_for @wc do |f|  %>
+    <%= f.input :name, label: 'Name :' %>
+    <%= f.input :description, label: 'Description :', as: :text %>
+    <%= f.input :address, label: 'Address :', placeholder: '12 rue Princesse, 59000 Lille' %>
+    <%= f.label :availability, label: 'Availability :' %>
+    <br/>
+    <%= f.collection_radio_buttons :availability, [[true, 'Yes '] ,[false, ' No']], :first, :last,
+        checked: [true, 'Yes '] %>
+    <br/>
+    <%= f.button :submit %>
+    <% end %>
+  </div>
+
