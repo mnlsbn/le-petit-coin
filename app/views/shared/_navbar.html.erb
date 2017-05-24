@@ -1,56 +1,58 @@
 <div class="navbar-lepetitcoin navbar-lepetitcoin-fixed">
   <!-- Logo -->
-    <%= link_to image_tag('le_petit_coin'), root_path, class: "navbar-lepetitcoin-brand" %>
+    <%= link_to cl_image_tag('le_petit_coin_ewg3eg'), root_path, class: "navbar-lepetitcoin-brand" %>
     <!-- cl_image_tag('nom sous cloudinary') -->
-
   <!-- Right Navigation -->
   <div class="navbar-lepetitcoin-right hidden-xs hidden-sm">
-
-    <!-- Search form -->
-<!--     <form action="" class="navbar-lepetitcoin-search">
-      <input type="text" class="navbar-lepetitcoin-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-lepetitcoin-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form> -->
-
-
-    <!-- Notification link-->
-<!--     <a href="" class="navbar-lepetitcoin-item navbar-lepetitcoin-link">
-      <div class="badge-container">
-        <i class="fa fa-envelope-o"></i>
-        <div class="badge badge-blue">3</div>
-      </div>
-    </a> -->
-
-  <%= link_to 'Log in', new_user_session_path, class: "navbar-lepetitcoin-item navbar-lepetitcoin-link" %>
-  <%= link_to 'Sign up', new_user_registration_path, class: "navbar-lepetitcoin-item navbar-lepetitcoin-link" %>
-    <!-- Profile picture and dropdown -->
-<!--     <div class="navbar-lepetitcoin-item">
+    <% if user_signed_in? %>
+    <!--Profile picture and dropdown -->
       <div class="dropdown">
-        <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-lepetitcoin-menu" data-toggle="dropdown">
-        <ul class="dropdown-menu dropdown-menu-right navbar-lepetitcoin-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+        <%= cl_image_tag 'claudy_p9zqe1', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to profile_path(current_user) do %>
+              <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
         </ul>
       </div>
-    </div> -->
-
-    <!-- Button (call-to-action) -->
-<!--     <a href="" class="navbar-lepetitcoin-item navbar-lepetitcoin-button btn">Post stuff</a> -->
+    <% else %>
+    <!--Login & sign in links -->
+      <%= link_to 'Log in', new_user_session_path, class: "navbar-lepetitcoin-item navbar-lepetitcoin-link" %>
+      <%= link_to 'Sign up', new_user_registration_path, class: "navbar-lepetitcoin-item navbar-lepetitcoin-link" %>
+    <% end %>
   </div>
-
   <!-- Dropdown appearing on mobile only -->
-<!--   <div class="navbar-lepetitcoin-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-lepetitcoin-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
-    </div>
-  </div> -->
-      <!-- Text link -->
+  <div class="navbar-lepetitcoin-item hidden-md hidden-lg">
+      <% if user_signed_in? %>
+          <div class="dropdown">
+            <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+            <ul class="dropdown-menu dropdown-menu-right navbar-lepetitcoin-dropdown-menu">
+              <li>
+                <%= link_to profile_path(current_user) do %>
+                  <%= t(".profile", default: "Profile") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+      <% else %>
+        <div class="dropdown">
+          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-lepetitcoin-dropdown-menu">
+            <li><%= link_to 'Log in', new_user_session_path, class: "navbar-lepetitcoin-item navbar-lepetitcoin-link" %></li>
+            <li><%= link_to 'Sign up', new_user_registration_path, class: "navbar-lepetitcoin-item navbar-lepetitcoin-link" %></li>
+          </ul>
+        </div>
+      <% end %>
+  </div>
 </div>
