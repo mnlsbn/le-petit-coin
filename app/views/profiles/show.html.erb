@@ -1,2 +1,18 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class='form'>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <%= link_to "Create your WC", new_wc_path, class: "btn btn-primary"  %>
+      <%= link_to "Manage your bookings", root_path, class: "btn btn-primary"  %>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6">
+        <fieldset>
+            <legend>Your profile:</legend>
+              <ul class="list-unstyled">
+                <li><strong>First-name : </strong><%= @profile.first_name %></li>
+                <li><strong>Last-name : </strong><%= @profile.last_name %></li>
+                <li><strong>Phone-number : </strong><%= @profile.phone_number %></li>
+              </ul>
+        </fieldset>
+    </div>
+  </div>
+</div>
