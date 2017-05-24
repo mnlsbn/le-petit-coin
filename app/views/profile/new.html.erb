@@ -3,7 +3,7 @@
     <fieldset>
         <legend>Create your profile</legend>
       <div class="card-new text-center">
-        <%= simple_form_for [@profile] do |f| %>
+        <%= simple_form_for @profile, url: profile_path do |f| %>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
           <%= f.input :phone_number %>
