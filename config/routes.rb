@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :wcs, only: [:index, :new, :create]
+
+  resources :profiles, except: [:index]
+  resources :wcs, only: [:index, :show, :new, :create]
+
 
   resource :profile, controller: :profile
   devise_for :users
