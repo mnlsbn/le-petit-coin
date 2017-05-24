@@ -12,6 +12,7 @@ class WcsController < ApplicationController
   end
 
   def create
+    @user = User.new(params[:id])
     @wc = Wc.new(wc_params)
     if @wc.save
       redirect_to wc_path(@wc)
