@@ -14,7 +14,7 @@ class WcsController < ApplicationController
   def create
     @wc = Wc.new(wc_params)
     if @wc.save
-      redirect_to wcs_path(@wc)
+      redirect_to wc_path(@wc)
     else
       render :new
     end

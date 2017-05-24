@@ -1,13 +1,16 @@
-<div class="container">
-  <h1><%= @wc.name %></h1>
-  <p><strong>Description :</strong></p>
-  <%= @wc.description.capitalize %>
-  <p></p>
-  <p><strong>Addresse: </strong></p>
-  <%=  @wc.address%>
-  <p></p>
-  <p><strong>Available ? </strong></p>
-  <%=  @wc.availability == true ? 'Yes' : 'No, sorry' %>
-  <p></p>
-  <%= link_to 'Book Now', new_wc_booking_path(@wc), { class: 'btn btn-primary'} %>
+<div class="form">
+  <div class = 'col-xs-12 col-md-6'>
+    <%= image_tag ('wc_icon'), height: 100 %>
+    <h1><%= @wc.name %></h1>
+    <p><strong>Description :</strong></p>
+    <%= @wc.description.capitalize %>
+    <p></p>
+    <p><strong>Addresse: </strong></p>
+    <%=  @wc.address%>
+    <p></p>
+    <p><strong>Available ? </strong></p>
+    <%=  @wc.availability == true ? 'Yes' : 'No, sorry' %>
+    <p></p>
+    <%= link_to 'Book Now', new_wc_booking_path(@wc), { class: 'btn btn-primary'} %>
+  </div>
 </div>
