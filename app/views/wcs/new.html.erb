@@ -1,0 +1,7 @@
+ <%= simple_form_for @wc do |f|  %>
+  <%= f.input :name, label: 'Name :' %>
+  <%= f.input :description, label: 'Description :', as: :text %>
+  <%= f.input :address, label: 'Address :', placeholder: '12 rue Princesse, 59000 Lille' %>
+  <%= f.input :availability %>
+  <%= f.button :submit %>
+  <% end %>
