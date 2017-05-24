@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :profiles, except: [:index]
   resources :wcs, only: [:index, :show, :new, :create]
 
 
