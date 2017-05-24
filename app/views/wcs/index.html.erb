@@ -1,0 +1,14 @@
+<h1> List of All available toilets </h1>
+
+<%= link_to 'Add new', new_wc_path %>
+
+<% @wcs.each do |wc| %>
+  <ul class="list-unstyled">
+    <li><strong>Name : </strong><%= wc.name %></li>
+    <li><strong>Description : </strong><%= wc.description %></li>
+    <li><strong>Address : </strong><%= wc.address %></li>
+    <li><strong>Availability : </strong><%= wc.availability %></li>
+  </ul>
+<% end %>
+
+
