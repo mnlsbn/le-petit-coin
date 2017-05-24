@@ -1,14 +1,20 @@
-<h1> List of All available toilets </h1>
+<div class='container'>
+  <div class='col-xs-12 col-md-6'>
+    <h2> Do what you need to do ! </h2>
 
-<%= link_to 'Add new', new_wc_path, { class: "btn btn-default" }%>
+    <% @wcs.each do |wc| %>
+    <div class='card'>
+      <ul class="list-unstyled">
+        <li><h4><strong><%= link_to wc.name , wc_path(wc) %></strong></h4></li>
+        <li><strong>Description : </strong><%= wc.description %></li>
+        <li><strong>Address : </strong><%= wc.address %></li>
+        <li><strong>Availability : </strong><%= wc.availability %></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
 
-<% @wcs.each do |wc| %>
-  <ul class="list-unstyled">
-    <li><strong>Name : </strong><%= wc.name %></li>
-    <li><strong>Description : </strong><%= wc.description %></li>
-    <li><strong>Address : </strong><%= wc.address %></li>
-    <li><strong>Availability : </strong><%= wc.availability %></li>
-  </ul>
-<% end %>
-
-
+  <div class='col-xs-12 col-md-6'>
+    <!-- your div to put the map -->
+  </div>
+</div>

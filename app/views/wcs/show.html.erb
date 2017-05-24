@@ -12,5 +12,6 @@
     <%=  @wc.availability == true ? 'Yes' : 'No, sorry' %>
     <p></p>
     <%= link_to 'Book Now', new_wc_booking_path(@wc), { class: 'btn btn-primary'} %>
+    <p><%= link_to 'Back to the list', wcs_path %></p>
   </div>
 </div>
