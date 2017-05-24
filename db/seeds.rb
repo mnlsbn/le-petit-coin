@@ -13,22 +13,53 @@ User.destroy_all
 vincent = User.create!(email:'vincent.dupont@hotmail.com', password: '123456' )
 romain = User.create!(email:'romain.daniels@gmail.com', password: '123456' )
 manuel = User.create(email:'manuel.toulemonde@hotmail.com', password: '123456' )
+fx = User.create(email: 'fx@lewagon.fr', password: '123456')
 
-wc_de_romain = Wc.create(
-  name: 'Super Wc',
-  description: 'Wc propre et bien aéré',
-  address: '121 Rue Saint-André, 59800 Lille, France',
+
+Wc.create!(
+  name: 'Chez FX',
+  description: 'Viens, prends une bière, et fait ce que tu as à faire :-)',
+  address: '2 rue du Béguinage, 59800 Lille, France',
   availability: true,
-  user: romain)
+  user: fx
+)
 
-wc_de_manuel = Wc.create(
- name: 'Idéal gens pressés',
- description: 'se trouve dans la cour, donc accès rapide',
- address: '59-61 Rue du Metz, 59800 Lille, France',
- availability: true,
- user: manuel)
+wc_de_romain = Wc.create!(
+   name: 'Wc avec vue',
+   description: 'La fenêtre des WC donne sur un petit jardin arboré',
+   address: '220 Rue de la Cense aux Blés, 59800 Lille, France',
+   availability: true,
+   user: romain)
+
+wc_de_manuel = Wc.create!(
+   name: 'Idéal gens pressés',
+   description: 'se trouve dans la cour, donc accès rapide',
+   address: '59-61 Rue du Metz, 59800 Lille, France',
+   availability: true,
+   user: manuel
+   )
+
+Wc.create!(
+   name: 'Belle Cuvette',
+   description: 'Toilettes refaits à neuf en début d\'année',
+   address: '32-36 Rue Saint-Sébastien, 59800 Lille, France',
+   availability: true,
+   user: manuel
+)
+
+Wc.create!(
+  name: 'The place to be!',
+  description: 'Enjoy a perfect toilet and make the most of your commission',
+  address: '3 Rue de Jemmapes, 59800 Lille, France',
+  availability: true,
+  user: manuel
+  )
+
+
+
 
 booking_test = Booking.create(user: vincent, wc: wc_de_romain)
+
 
 
 # #USERS SEEDS--------------------------------------------------------------------
