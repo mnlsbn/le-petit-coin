@@ -1,6 +1,6 @@
 <div class="form">
   <div class = 'col-xs-12 col-md-6'>
-    <%= image_tag ('wc_icon'), height: 100 %>
+    <%= cl_image_tag ('wc_icon_ipzyxq'), height: 100 %>
     <h1><%= @wc.name %></h1>
     <p><strong>Description :</strong></p>
     <%= @wc.description.capitalize %>
@@ -15,8 +15,3 @@
     <p><%= link_to 'Back to the list', wcs_path %></p>
   </div>
 </div>
-
-
-<% @wc.bookings.each do |booking| %>
-<%= booking.id %>
-<% end %>
