@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     if @booking.save
       @wc.availability = false
       @wc.save
-      redirect_to root_path
+      redirect_to wc_path(@wc)
     else
       render :new
     end
