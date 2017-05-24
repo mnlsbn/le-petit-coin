@@ -23,13 +23,13 @@ class BookingsController < ApplicationController
     end
   end
 
-  def edit
-    @booking = Booking.find(params[:id])
-  end
+  # def edit
+  #   @booking = Booking.find(params[:id])
+  # end
 
-  def update
-    @booking = Booking.find(params[:id])
-    @booking.update(params[:booking])
+  # def update
+  #   @booking = Booking.find(params[:id])
+  #   @booking.update(params[:booking])
   end
 
   # private
