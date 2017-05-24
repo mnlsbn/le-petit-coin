@@ -3,6 +3,10 @@ class WcsController < ApplicationController
     @wcs = Wc.all
   end
 
+  def show
+    @wc = Wc.find(params[:id])
+  end
+
   def new
     @wc = Wc.new
   end
