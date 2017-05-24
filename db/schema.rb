@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523142355) do
+ActiveRecord::Schema.define(version: 20170523151249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20170523142355) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "wc_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
+    t.index ["wc_id"], name: "index_bookings_on_wc_id", using: :btree
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -67,5 +77,7 @@ ActiveRecord::Schema.define(version: 20170523142355) do
     t.index ["user_id"], name: "index_wcs_on_user_id", using: :btree
   end
 
+  add_foreign_key "bookings", "users"
+  add_foreign_key "bookings", "wcs"
   add_foreign_key "wcs", "users"
 end
