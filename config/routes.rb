@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :profiles, except: [:index]
+  resources :wcs, only: [:index, :new, :create]
 
   devise_for :users
   root to: 'pages#home'
