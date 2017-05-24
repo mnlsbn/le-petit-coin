@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
   # def update
   #   @booking = Booking.find(params[:id])
   #   @booking.update(params[:booking])
-  end
+  # end
 
   # private
 
