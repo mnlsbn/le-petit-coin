@@ -1,13 +1,11 @@
 class WcsController < ApplicationController
   def index
-    @wcs = Wc.all
-
-    @wcs = Wc.where.not(latitude: nil, longitude: nil)
+        @wcs = Wc.where.not(latitude: nil, longitude: nil)
 
       @hash = Gmaps4rails.build_markers(@wcs) do |wc, marker|
         marker.lat wc.latitude
         marker.lng wc.longitude
-        marker.infowindow render_to_string(partial: "/wcs/map_box", locals: { wc: wc })
+        #marker.infowindow render_to_string(partial: "/wcs/map_box", locals: { wc: wc })
       end
   end
 
