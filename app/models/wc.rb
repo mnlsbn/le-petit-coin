@@ -9,5 +9,6 @@ class Wc < ApplicationRecord
   validates :address, presence: { message: "please indicate the address of your toilets" }
   # bug avec Form WC New / validates :availability, presence: { message: "you need to indicate whether your toilets are available or not (true or false)" }
   validates_uniqueness_of :name, :scope => [:user_id]
+  has_many :reviews, through: :bookings
 end
 
