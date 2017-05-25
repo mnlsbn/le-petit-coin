@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524134036) do
+ActiveRecord::Schema.define(version: 20170525103048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,13 +42,22 @@ ActiveRecord::Schema.define(version: 20170524134036) do
 
   create_table "profiles", force: :cascade do |t|
     t.string   "phone_number"
-    t.string   "picture"
+    t.string   "photo"
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "description"
+    t.integer  "rating"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "booking_id"
+    t.index ["booking_id"], name: "index_reviews_on_booking_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,11 +87,13 @@ ActiveRecord::Schema.define(version: 20170524134036) do
     t.datetime "updated_at",   null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "photo"
     t.index ["user_id"], name: "index_wcs_on_user_id", using: :btree
   end
 
   add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "wcs"
   add_foreign_key "profiles", "users"
+  add_foreign_key "reviews", "bookings"
   add_foreign_key "wcs", "users"
 end

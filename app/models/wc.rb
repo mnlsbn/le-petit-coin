@@ -2,8 +2,13 @@ class Wc < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  has_attachment :photo
+
   belongs_to :user
+
   has_many :bookings, dependent: :destroy
+  has_many :reviews, through: :bookings
+
   #has_many :reviews
   validates :name, presence: { message: "please give a name to your toilets" }
   validates :address, presence: { message: "please indicate the address of your toilets" }

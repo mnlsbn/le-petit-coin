@@ -1,6 +1,13 @@
 <div class="form">
   <div class = 'col-xs-12 col-md-6'>
-    <%= cl_image_tag ('wc_icon_ipzyxq'), height: 100 %>
+  <%= cl_image_tag ('wc_icon_ipzyxq'), height: 100 %>
+  </div>
+</div>
+<div class="form">
+  <div class = 'col-xs-12 col-md-6'>
+    <% if @wc.photo? %>
+      <%= cl_image_tag @wc.photo.path, width: 200, height: 300, crop: :fill %>
+    <% end %>
     <h1><%= @wc.name %></h1>
     <p><strong>Description :</strong></p>
     <%= @wc.description.capitalize %>
@@ -15,3 +22,22 @@
     <p><%= link_to 'Back to the list', wcs_path %></p>
   </div>
 </div>
+
+<div class="reviews">
+  <%= @wc.reviews.each do |review| %>
+    <%= review.description %>
+  <% end %>
+</div>
+
+<% if current_user.bookings.pluck(:wc_id).include? @wc.id %>
+  <% Booking.where(wc_id: @wc.id, user: current_user).each do |booking| %>
+    <div class="add-review" style="border:1px solid;">
+
+    <%= 'Vous avez profité du WC de' + 'le' + booking.created_at.to_s %>
+    <% if booking.reviews.empty? %>
+      <p>Notez votre visite: </p>
+      <%= render partial: 'reviews/form', locals: {booking: booking, review: Review.new } %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

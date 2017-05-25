@@ -8,7 +8,7 @@ class ProfileController < ApplicationController
     if @profile.save
       redirect_to profile_path(@profile)
     else
-      render :new   # link à updater
+      render :new
     end
   end
 
@@ -28,6 +28,6 @@ class ProfileController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :picture, :phone_number)
+    params.require(:profile).permit(:first_name, :last_name, :picture, :phone_number, :photo, :photo_cache)
   end
 end

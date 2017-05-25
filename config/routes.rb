@@ -8,8 +8,16 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  as :user do
+  get 'profile/new', :to => 'devise/sessions#create', :as => :user_root
+  end
+
   resources :wcs do
     resources :bookings
+  end
+
+  resources :bookings do
+    resources :reviews, only: [:index, :new, :create, :show]
   end
 
   root to: 'pages#home'
