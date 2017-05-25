@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525103048) do
+ActiveRecord::Schema.define(version: 20170525101546)
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20170525103048) do
 
   create_table "profiles", force: :cascade do |t|
     t.string   "phone_number"
-    t.string   "picture"
+    t.string   "photo"
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at",   null: false
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170525103048) do
     t.datetime "updated_at",   null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "photo"
     t.index ["user_id"], name: "index_wcs_on_user_id", using: :btree
   end
 
