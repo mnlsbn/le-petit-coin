@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings do
-    resources :reviews, only: [:index, :new, :create, :show]
+    resources :reviews, only: [:create]
   end
 
   root to: 'pages#home'
