@@ -5,13 +5,14 @@ class WcsController < ApplicationController
       @hash = Gmaps4rails.build_markers(@wcs) do |wc, marker|
         marker.lat wc.latitude
         marker.lng wc.longitude
-        #marker.infowindow render_to_string(partial: "/wcs/map_box", locals: { wc: wc })
+        marker.infowindow render_to_string(partial: "/wcs/map_box", locals: { wc: wc })
       end
   end
 
   def show
     @wc = Wc.find(params[:id])
     @wc_coordinates = { lat: @wc.latitude, lng: @wc.longitude }
+    @reviews = []
   end
 
   def new
