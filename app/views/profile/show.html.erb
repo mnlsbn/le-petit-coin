@@ -8,12 +8,15 @@
         <fieldset>
             <legend>My profile:</legend>
               <% if @profile %>
-              <ul class="list-unstyled">
-                <li><strong>First-name : </strong><%= @profile.first_name %></li>
-                <li><strong>Last-name : </strong><%= @profile.last_name %></li>
-                <li><strong>Phone-number : </strong><%= @profile.phone_number %></li>
-                <li><strong>Email : </strong><%= current_user.email %></li>
-              </ul>
+                <% if @profile.photo? %>
+                  <%= cl_image_tag @profile.photo.path, width: 200, height: 300, crop: :fill %>
+                <% end %>
+                <ul class="list-unstyled">
+                  <li><strong>First-name : </strong><%= @profile.first_name %></li>
+                  <li><strong>Last-name : </strong><%= @profile.last_name %></li>
+                  <li><strong>Phone-number : </strong><%= @profile.phone_number %></li>
+                  <li><strong>Email : </strong><%= current_user.email %></li>
+                </ul>
               <% else %>
                 <%= link_to "Please create your profile", new_profile_path, class: "btn btn-primary"  %>
               <% end %>
