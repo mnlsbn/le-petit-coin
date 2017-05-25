@@ -1,5 +1,6 @@
 <%= simple_form_for [booking, review] do |f| %>
-  <%= f.input :description %>
-  <%= f.input :rating %>
+  <%= f.input :description, label: 'Leave a comment' %>
+  <%= f.input :rating, label: 'Rate this Petit Coin', input_html: { min: '0', max: '5', step: 'any' } %>
+
   <%= f.submit "Add my review", class: "btn btn-primary" %>
 <% end %>
