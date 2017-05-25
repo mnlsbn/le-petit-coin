@@ -9,8 +9,9 @@ class ReviewsController < ApplicationController
   # end
 
   def create
-
+    @user = current_user
     @review = Review.new(review_params)
+    @review.user = current_user
     @review.booking_id = params[:booking_id].to_i
     @booking = Booking.find(params[:booking_id].to_i)
 
