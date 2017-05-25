@@ -31,6 +31,6 @@ class WcsController < ApplicationController
   private
 
   def wc_params
-    params.require(:wc).permit(:name,:description,:address,:availability)
+    params.require(:wc).permit(:name,:description,:address,:availability,:photo,:photo_cache)
   end
 end
