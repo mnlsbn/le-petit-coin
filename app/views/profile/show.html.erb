@@ -33,7 +33,7 @@
           <% if @profile %>
             <% @profile.user.wcs.all.each do |f| %>
               <li>
-                <%= cli_image_tag (f.photo), class: 'sticker-small' unless f.photo.nil? %>
+                <%= cl_image_tag (f.photo.path), class: 'sticker-small' unless f.photo.nil? %>
                 <strong><%= f.name %></strong>
                 <span class="btn btn-success btn-xs">Available</span>
               </li>

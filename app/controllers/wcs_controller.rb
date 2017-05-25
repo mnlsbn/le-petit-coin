@@ -20,8 +20,10 @@ class WcsController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:id])
-    @wc = Wc.new(wc_params)
+  #@wc = current_user.build_wc(wc_params)
+   @user = current_user
+   @wc = Wc.new(wc_params)
+   @wc.user = current_user
     if @wc.save
       redirect_to wc_path(@wc)
     else
