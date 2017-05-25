@@ -1,17 +1,19 @@
 <div class='container-profile'>
   <div class="row row-one-profile">
 
-    <div class="col-xs-2 col1">
-      <%= image_tag ('http://www.konbini.com/wp-content/blogs.dir/3/files/2015/05/dikkenek-2006-12-g-1-810x461.jpg'), class: 'img-profile' %>
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col1">
+      <fieldset>
+        <% if @profile.photo? %>
+          <%= cl_image_tag @profile.photo.path, width: 200, height: 300, crop: :fill, class: 'thumbnail' %>
+        <% end %>
+      </fieldset>
     </div>
 
-    <div class="col-xs-6 col2">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col2">
         <fieldset>
             <legend>My profile:</legend>
               <% if @profile %>
-                <% if @profile.photo? %>
-#                  <%= cl_image_tag @profile.photo.path, width: 200, height: 300, crop: :fill, class: 'thumbnail' %>
-                <% end %>
+
                 <ul class="list-unstyled">
                   <li><strong>First-name : </strong><%= @profile.first_name %></li>
                   <li><strong>Last-name : </strong><%= @profile.last_name %></li>
@@ -24,23 +26,24 @@
         </fieldset>
     </div>
 
-    <div class="col-xs-4 col3">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col3">
       <fieldset>
         <legend>My Wcs :</legend>
         <ul class="list-unstyled">
           <% if @profile %>
-            <% @profile.user.wcs.all.each do |wc| %>
+            <% @profile.user.wcs.all.each do |f| %>
               <li>
-                <%= cli_image_tag (wc.photo), class: 'sticker-small' %>
-                <strong><%= wc.name %></strong>
-                <span class="label label-success">Available</span>
+                <%= cli_image_tag (f.photo), class: 'sticker-small' unless f.photo.nil? %>
+                <strong><%= f.name %></strong>
+                <span class="btn btn-success btn-xs">Available</span>
               </li>
             <% end %>
           <% else %>
             <p> You don't have any Wc. Click to add one. </p>
           <% end %>
-          <%= link_to "Add new", new_profile_wc_path, class: "fa fa-plus-circle"  aria-hidden: "true" %>
         </ul>
+          <%= link_to " Add new", new_profile_wc_path, class: "fa fa-plus-circle"  %>
+
       </fieldset>
     </div>
 
