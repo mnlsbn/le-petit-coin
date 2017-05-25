@@ -3,16 +3,19 @@ class ReviewsController < ApplicationController
   #   @reviews = Review.all
   # end
 
-  def new
-    @booking = Booking.find(params[:booking_id])
-    @review = Review.new
-  end
+  # def new
+  #   @booking = Booking.find(params[:booking_id])
+  #   @review = Review.new
+  # end
 
   def create
+
     @review = Review.new(review_params)
-    @booking = Booking.find(params[:booking_id])
+    @review.booking_id = params[:booking_id].to_i
+    @booking = Booking.find(params[:booking_id].to_i)
+
     if @review.save
-      redirect_to  wc_bookings_path(@wc)
+      redirect_to  wc_path(@booking.wc_id)
     else
       render :new
     end
