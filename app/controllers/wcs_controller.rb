@@ -12,6 +12,7 @@ class WcsController < ApplicationController
   def show
     @wc = Wc.find(params[:id])
     @wc_coordinates = { lat: @wc.latitude, lng: @wc.longitude }
+    @reviews = []
   end
 
   def new
