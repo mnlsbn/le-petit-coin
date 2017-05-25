@@ -15,6 +15,10 @@ romain = User.create!(email:'romain.daniels@gmail.com', password: '123456' )
 manuel = User.create(email:'manuel.toulemonde@hotmail.com', password: '123456' )
 fx = User.create(email: 'fx@lewagon.fr', password: '123456')
 
+vincent_profile = Profile.create!(first_name: "vincent", last_name: "dupont", phone_number: "01 22 22 22 22", user: vincent)
+romain_profile = Profile.create!(first_name: "romain", last_name: "daniels", phone_number: "01 22 22 22 22", user: romain)
+manuel_profile = Profile.create!(first_name: "manuel", last_name: "toulemonde", phone_number: "01 22 22 22 22", user: manuel)
+fx_profile = Profile.create!(first_name: "fx", last_name: "abraham", phone_number: "01 22 22 22 22", user: fx)
 
 Wc.create!(
   name: 'Chez FX',
