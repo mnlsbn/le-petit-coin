@@ -24,6 +24,7 @@ class WcsController < ApplicationController
    @user = current_user
    @wc = Wc.new(wc_params)
    @wc.user = current_user
+
     if @wc.save
       redirect_to wc_path(@wc)
     else
