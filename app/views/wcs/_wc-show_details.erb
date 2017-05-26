@@ -1,0 +1,51 @@
+<div class="wc-show_details col-md-7">
+
+  <!-- Review form -->
+  <div class="row">
+    <% if current_user %>
+      <div class="wc-show_details-block">
+        <h3>Leave a review:</h3>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <% if current_user %>
+      <div class= "review_form">
+        <% if current_user.bookings.pluck(:wc_id).include? @wc.id %>
+          <% Booking.where(wc_id: @wc.id, user: current_user).each do |booking| %>
+            <div class="add-review" >
+              <% if booking.reviews.empty? %>
+              <%= render partial: 'reviews/form', locals: {booking: booking, review: Review.new } %>
+            </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Wc Review index -->
+  <div class="row">
+    <div class="review_block">
+      <h3>All reviews:</h3>
+    </div>
+  </div>
+
+    <div class="row">
+      <% @wc.reviews.each do |review| %>
+        <div class="review_block">
+          <ul class="list-unstyled">
+            <li><em><%= 'Review posted by ' + Profile.where(user_id: Booking.find(review.booking_id).user_id).first.first_name.capitalize + ' on ' + review.created_at.to_formatted_s(:long) %> [Rating: <%= review.rating %>]</em></li>
+            <li><%= review.description %></li>
+          </ul>
+        </div>
+     <% end %>
+  </div>
+
+</div>
+
+
+
+
+

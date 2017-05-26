@@ -16,3 +16,7 @@
     <% end %>
   </div>
 </div>
+
+<% content_for :after_js do %>
+  <%= javascript_include_tag 'wc_create_autocomplete.js' %>
+<%end%>
