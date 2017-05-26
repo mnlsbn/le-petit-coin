@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     resources :wcs, only: [:new, :create]
   end
 
-  resources :wcs, only: [:index, :show]
+  resources :wcs, only: [:index, :show] do
+    member do
+      patch '/mickey', action: :mickey  #patch parce que cette route attend une modif
+    end
+  end
 
   devise_for :users
 

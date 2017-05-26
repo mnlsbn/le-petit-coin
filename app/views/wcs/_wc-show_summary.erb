@@ -1,5 +1,5 @@
 <div class="wc-show_summary col-md-7">
-  <h2 class="text-center"><%= @wc.name %></h2>
+  <h2 class="text-center"><%= @wc.name.capitalize %></h2>
   <div class="row">
     <div class="image col-md-6">
       <%= cl_image_tag @wc.photo.path, class: 'img-responsive img-thumbnail' %>
