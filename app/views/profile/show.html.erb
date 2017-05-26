@@ -58,12 +58,18 @@
     <div class="col-xs-12">
       <fieldset>
         <legend>My Bookings :</legend>
-        <p> People who used my wcs </p>
+          <% if current_user.wcs.length > 0 %>
+            <p> People who used my wcs </p>
+          <% elsif current_user.wcs.length == 0 %>
+            <p> You don't have any toilets yet </p>
+          <% else %>
+            <p> No one has ever used your toilets for the moment </p>
+          <% end %>
           <ul class="list-unstyled ul-bookings">
             <% current_user.wcs.each do |wc| %>
               <% Booking.where(wc_id: wc).each do |b| %>
                 <li>
-                  <% cl_image_tag (b.user.profile.photo.path), class: 'avatar' unless b.user.profile.photo.nil? %>
+                  <%= cl_image_tag (b.user.profile.photo.path), class: 'avatar' unless b.user.profile.photo.nil? %>
                   <strong>
                     <%= link_to profile_path(b.user.profile) do %>
                     <%= b.user.profile.first_name.capitalize %>
@@ -78,7 +84,11 @@
             <% end %>
           </ul>
         <hr></hr>
-        <p> Toilets I used.... </p>
+        <% if current_user.bookings.length > 0 %>
+          <p> Toilets I used.... </p>
+        <% else %>
+          <p> You haven't used any toilets yet </p>
+        <% end %>
           <ul class="list-unstyled ul-bookings">
             <% current_user.bookings.each do |b| %>
               <li>
