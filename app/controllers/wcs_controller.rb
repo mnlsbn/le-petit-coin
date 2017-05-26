@@ -45,6 +45,13 @@ class WcsController < ApplicationController
     end
   end
 
+  def mickey
+    @wc = Wc.find(params[:id])
+    @wc.availability == false ? @wc.availability = true : @wc.availability = false
+    @wc.save
+    redirect_to profile_path(@wc)
+  end
+
   private
 
   def wc_params
