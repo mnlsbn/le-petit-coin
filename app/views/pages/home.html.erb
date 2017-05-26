@@ -47,10 +47,6 @@
 <p></p>
 </div>
 
-
-<script>
-
-
-
-
-</script>
+<% content_for :after_js do %>
+  <%= javascript_include_tag 'autocomplete.js' %>
+<%end%>
