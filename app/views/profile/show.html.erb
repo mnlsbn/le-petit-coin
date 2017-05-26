@@ -55,7 +55,24 @@
     <div class="col-xs-12">
       <fieldset>
         <legend>My Bookings :</legend>
-          <ul class="list-unstyled">
+        <p> People who used my wcs </p>
+          <ul class="list-unstyled ul-bookings">
+            <% Booking.where(wc_id: 93).each do |b| %>
+              <li>
+                <%= cl_image_tag (b.user.profile.photo.path), class: 'avatar' unless b.user.profile.photo.path.nil? %>
+                <strong>
+                  <%= link_to profile_path(b.user.profile) do %>
+                  <%= b.user.profile.first_name.capitalize %>
+                  <%= b.user.profile.last_name.capitalize %>
+                  <% end %>
+                </strong>
+                -
+                <%= b.created_at.to_formatted_s(:long)  %></li>
+            <% end %>
+          </ul>
+        <hr></hr>
+        <p> Toilets I used.... </p>
+          <ul class="list-unstyled ul-bookings">
             <% current_user.bookings.each do |b| %>
               <li>
                 <%= cl_image_tag (b.wc.photo.path), class: 'sticker-small' unless b.wc.photo.nil? %>
