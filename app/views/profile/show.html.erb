@@ -32,15 +32,16 @@
         <legend>My Wcs :</legend>
         <ul class="list-unstyled">
           <% if @profile %>
-            <% @profile.user.wcs.all.each do |f| %>
+            <% @profile.user.wcs.all.order(:name).each do |f| %>
               <li>
 
                 <%= link_to wc_path(f) do %>
                   <%= cl_image_tag (f.photo.path), class: 'sticker-small' unless f.photo.nil? %>
                   <strong><%= link_to f.name, wc_path(f) %></strong>
                 <% end %>
-
-                <span class="btn btn-success btn-xs">Available</span>
+                <% f.availability == true ? status = 'Available' : status = 'Not Available' %>
+                <% f.availability == true ? classe = 'btn btn-success btn-xs' : classe = 'btn btn-info btn-xs' %>
+                <%= link_to status, mickey_wc_path(f), method: :patch, class: classe %>
               </li>
             <% end %>
           <% else %>
@@ -66,7 +67,7 @@
             <p> No one has ever used your toilets for the moment </p>
           <% end %>
           <ul class="list-unstyled ul-bookings">
-            <% current_user.wcs.each do |wc| %>
+            <% current_user.wcs.order(:name).each do |wc| %>
               <% Booking.where(wc_id: wc).each do |b| %>
                 <li>
                   <%= cl_image_tag (b.user.profile.photo.path), class: 'avatar' unless b.user.profile.photo.nil? %>
