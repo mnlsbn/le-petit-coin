@@ -58,11 +58,14 @@
 <!-- Reviews -->
 
 <div class="reviews">
-  <%= @wc.reviews.each do |review| %>
-    <%= 'Posted by ' + Profile.where(user_id: Booking.find(review.booking_id).user_id).first.first_name.capitalize + review.description %>
+  <% @wc.reviews.each do |review| %>
+    <%= 'Review posted by ' + Profile.where(user_id: Booking.find(review.booking_id).user_id).first.first_name.capitalize + ' on ' + review.created_at.to_s %>
+    <br/>
     <%= review.rating %>
+    <br/>
     <%= review.description %>
   <% end %>
+
 </div>
 <% if current_user %>
   <div class="form">
