@@ -1,0 +1,17 @@
+LOG:  database system was shut down at 2017-05-25 21:01:31 CEST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
+FATAL:  database "le-petit-coin_development" does not exist
