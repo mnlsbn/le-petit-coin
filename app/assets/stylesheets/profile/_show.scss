@@ -14,7 +14,15 @@
 
 .col3{
   border-left: 1px solid #eee;
+
+  a{
+    text-decoration:none;
+  }
 }
 
-
-
+.ul-bookings{
+  li{
+    margin: 4px 0px;
+    font-size:1.1em;
+  }
+}
