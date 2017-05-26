@@ -5,7 +5,7 @@
       <div class='card' id="wc">
 
         <% if wc.photo? %>
-          <%= link_to (cl_image_tag wc.photo.path, class: 'img'), wc_path(wc)%>
+          <%= link_to (cl_image_tag wc.photo.path, width: 260, height: 200), wc_path(wc)%>
         <% end %>
         <h4><%= link_to wc.name.capitalize, wc_path(wc) %></h4>
         <% if wc.availability %>
@@ -13,7 +13,7 @@
         <% else %>
         <span class="available label label-danger" >Not Available</span>
         <% end %>
-        <p><%= wc.description.first(50) + '...' %></p>
+        <p><%= wc.description.first(40) + '...' %></p>
       </div>
     </div>
     <% end %>
