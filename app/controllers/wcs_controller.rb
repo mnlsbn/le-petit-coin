@@ -1,12 +1,20 @@
 class WcsController < ApplicationController
-  def index
-        @wcs = Wc.where.not(latitude: nil, longitude: nil)
 
-      @hash = Gmaps4rails.build_markers(@wcs) do |wc, marker|
-        marker.lat wc.latitude
-        marker.lng wc.longitude
-        marker.infowindow render_to_string(partial: "/wcs/map_box", locals: { wc: wc })
-      end
+  def index
+
+
+@wcs = Wc.near(params[:address], 0.1)
+    #2 : implémenter l'auto completion de la barre de search :
+    #3 : Ecrire la méthode de récup du param adress.
+    #4 : Ecrire la methode de near.wc(params [:address], 1)
+    #5 : poser un marqueur sur l'adresse demandé ave affichage des wcs dispos.
+
+    # @wcs = Wc.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@wcs) do |wc, marker|
+      marker.lat wc.latitude
+      marker.lng wc.longitude
+      marker.infowindow render_to_string(partial: "/wcs/map_box", locals: { wc: wc })
+    end
   end
 
   def show
