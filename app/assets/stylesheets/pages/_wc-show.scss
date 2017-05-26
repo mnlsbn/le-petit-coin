@@ -22,17 +22,31 @@
   }
 }
 
+.img_wc {
+  max-height: 50vh;
+}
+
+.review_form {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
 .wc-show_booking {
   text-align: center;
 }
 
-.wc-show_details {
+.wc-show_reviews {
+  margin-left: 20px 0;
 
 }
 
-.wc-show_description {
+.review_block {
+  margin-left: 20px;
+  margin-top: 20px;
+  > h3 {
+    font-size: 1.5em;
+  }
 }
-
 
 .wc-show_details-block {
   padding: 10px 0;
