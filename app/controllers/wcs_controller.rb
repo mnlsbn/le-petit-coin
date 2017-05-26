@@ -1,4 +1,5 @@
 class WcsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     #2 : implémenter l'auto completion de la barre de search :
