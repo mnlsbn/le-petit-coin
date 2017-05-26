@@ -1,0 +1,79 @@
+ <!-- Back to index -->
+    <div>
+    <p><%= link_to 'Back to the list', wcs_path %></p>
+    </div>
+
+
+ <!-- Card WC -->
+<div class="wc-show">
+  <div class="media">
+    <div class="media-body">
+      <div class="media-section card">
+        <h2><%= @wc.name %></h2>
+          <div class="form" id="profile_xl_card" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(10,10,10,0.2) 50%), url(<%=cl_image_path @wc.photo.path%>);">
+              <h3><em><%= 'Le Petit Coin de ' + Profile.where(user_id: @wc.user_id).first.first_name.capitalize %></em></h3>
+             <p><strong>Description :</strong></p>
+              <%= @wc.description.capitalize%>
+              <p></p>
+              <p><strong>Addresse: </strong></p>
+              <%=  @wc.address%>
+              <p></p>
+              <p><strong>Available ? </strong></p>
+              <%=  @wc.availability == true ? 'Yes' : 'No, sorry' %>
+              <p></p>
+              <%= render partial: 'bookings/form', locals: { booking: Booking.new, wc: @wc } %>
+          </div>
+      </div>
+    </div>
+
+    <!-- Map -->
+
+  </div>
+
+
+ <!-- Details -->
+  <div class="media">
+    <div class="media-body">
+      <div class="media-section card">
+            <p><strong>Description :</strong></p>
+        </div>
+      </div>
+    </div>
+
+  <!-- Reviews -->
+
+  <div class="reviews">
+    <% @wc.reviews.each do |review| %>
+      <ul class="list-unstyled">
+        <li><%= 'Review posted by ' + Profile.where(user_id: Booking.find(review.booking_id).user_id).first.first_name.capitalize + ' on ' + review.created_at.to_formatted_s(:long) %></li>
+        <li><%= review.rating %></li>
+        <li><%= review.description %></li>
+      </ul>
+   <% end %>
+  </div>
+
+  <% if current_user %>
+    <div class="form">
+      <% if current_user.bookings.pluck(:wc_id).include? @wc.id %>
+        <% Booking.where(wc_id: @wc.id, user: current_user).each do |booking| %>
+          <div class="add-review" style="border:1px solid;">
+
+          <p><%= 'You have had the chance to use ' + Profile.where(user_id: @wc.user_id).first.first_name.capitalize + "'s Petit Coin" + ' on ' + booking.created_at.to_formatted_s(:long)%></p>
+          <% if booking.reviews.empty? %>
+            <p>Let others know what you thought of it: </p>
+            <%= render partial: 'reviews/form', locals: {booking: booking, review: Review.new } %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- A valider si on conserve -->
+
+  <div class="form">
+    <div class = 'col-xs-12 col-md-6'>
+    <%= cl_image_tag ('wc_icon_ipzyxq'), height: 100 %>
+    </div>
+  </div>
+</div>
