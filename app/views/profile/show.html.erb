@@ -71,10 +71,10 @@
                 <li>
                   <%= cl_image_tag (b.user.profile.photo.path), class: 'avatar' unless b.user.profile.photo.nil? %>
                   <strong>
-                    <%= link_to profile_path(b.user.profile) do %>
+                    <%# link_to profile_path(b.user.profile) do %>
                     <%= b.user.profile.first_name.capitalize %>
                     <%= b.user.profile.last_name.capitalize %>
-                    <% end %>
+                    <%# end %>
                   </strong>
                    :
                   <%= b.wc.name.capitalize %>
