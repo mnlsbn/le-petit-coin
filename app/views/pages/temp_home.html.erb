@@ -15,3 +15,27 @@
     <% end %>
   </div>
 </div>
+
+
+<!-- Card à finaliser -->
+ <div class="container">
+   <div class="row">
+     <div class="col-xs-12 col-sm-4">
+       <% if @wc.photo? %>
+         <%= cl_image_tag @wc.photo.path, width: 200, height: 300, crop: :fill %>
+       <% end %>
+         <div class="card-category"><%= @wc.address %></div>
+         <div class="card-description">
+           <h2><%= @wc.name %></h2>
+           <p><%= @wc.description %></p>
+         </div>
+         <% if current_user.profile.photo? %>
+           <%= cl_image_tag wc.photo.path, class:"card-user avatar avatar-large" %>
+         <% end %>
+         <%= link_to "Details", wc_path(wc), class: "card-link" %>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<!-- Card à finaliser -->
