@@ -1,11 +1,40 @@
 #wc_index {
+  padding-top: 70px;
   margin-top: 40px;
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .card#wc {
-  color: $dark-blue;
+  color: $light-gray;
   text-shadow: none;
   margin-bottom: 20px;
   height: auto;
+  font-size: 0.8em;
+  img {
+    border-radius: 4px;
+  }
+}
+
+.card#wc  {
+   h4 {
+  font-size: 1.1em;
+  }
+  a{
+    color: #6F7E8D;
+  }
+}
+
+.index_card {
+  display: flex;
+}
+
+.available {
+  position: absolute;
+  bottom: 70px;
+  right: 5px;
+}
+
+.card {
+  position: relative;
 }
