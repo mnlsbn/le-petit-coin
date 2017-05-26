@@ -17,6 +17,10 @@
         <h3>Address:</h3>
         <p><%= @wc.address %></p>
       </div>
+
+      <div class="wc-show_booking wc-show_details-block">
+        <p><%= render partial: 'bookings/form', locals: { booking: Booking.new, wc: @wc } %></p>
+      </div>
     </div>
 
   </div>
