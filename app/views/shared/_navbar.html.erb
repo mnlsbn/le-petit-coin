@@ -8,7 +8,7 @@
     <% if user_signed_in? %>
     <!--Profile picture and dropdown -->
       <div class="dropdown">
-        <% if current_user.profile.present? %>
+        <% if current_user.profile.present? && current_user.profile.photo.present? %>
           <%= cl_image_tag current_user.profile.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"  %>
         <% else %>
           <%= image_tag 'http://placehold.it/60x60' , class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"  %>
